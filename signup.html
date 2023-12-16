@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./dist/output.css">
+  <link rel="stylesheet" href="./css/all.min.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <title>Clotak</title>
+</head>
+
+<body class="signupBody">
+
+  <div class="overflow-hidden alertParent">
+    <div
+      class="alert hide bg-main px-10 py-5 absolute w-96 top-3 right-0 overflow-hidden rounded border-l-8 border-solid border-l-green-600">
+      <span class="fa-solid alertIcon absolute left-5 top-1/2 -translate-y-1/2 text-second text-3xl"></span>
+      <span class="msg py-0 px-5 text-white"><span id="alertMsg"></span></span>
+      <span class="closeBtn absolute right-0 top-1/2 -translate-y-1/2 bg-main hover:bg-hover cursor-pointer py-5 px-4">
+        <span id="alertHide" class="fa-solid fa-times text-xl text-second "></span>
+      </span>
+    </div>
+  </div>
+  <main class="flex items-center justify-center text-white min-h-screen">
+<div class="loginhome bg-opacity-0 rounded text-center pt-12 px-3 pb-3">
+  <h1 class="text-4xl font-semibold m-0 mb-8">Sign Up Form</h1>
+  <div class="progress-bar flex my-10 mx-0">
+    <div class="step relative text-center w-full">
+      <p class="text-lg font-normal  mb-1">Name</p>
+      <div class="bullet h-6 w-6 text-lg font-normal relative">
+        <span class="font-norma text-lg absolute left-1/2 -translate-x-1/2">1</span>
+      </div>
+      <div class="check absolute left-1/2 -translate-x-1/2 -translate-y-1/2 text-lg fa-solid fa-check"></div>
+    </div>
+    <div class="step relative text-center w-full">
+      <p class="text-lg font-normal  mb-1">Contact</p>
+      <div class="bullet h-6 w-6 text-lg font-normal relative">
+        <span class="font-norma text-lg absolute left-1/2 -translate-x-1/2">2</span>
+      </div>
+      <div class="check absolute left-1/2 -translate-x-1/2 -translate-y-1/2 text-lg fa-solid fa-check"></div>
+    </div>
+    <div class="step relative text-center w-full">
+      <p class="text-lg font-normal  mb-1">Birth</p>
+      <div class="bullet h-6 w-6 text-lg font-normal relative">
+        <span class="font-norma text-lg absolute left-1/2 -translate-x-1/2">3</span>
+      </div>
+      <div class="check absolute left-1/2 -translate-x-1/2 -translate-y-1/2 text-lg fa-solid fa-check"></div>
+    </div>
+    <div class="step relative text-center w-full">
+      <p class="text-lg font-normal  mb-1">Submit</p>
+      <div class="bullet h-6 w-6 text-lg font-normal relative">
+        <span class="font-norma text-lg absolute left-1/2 -translate-x-1/2">4</span>
+      </div>
+      <div class="check absolute left-1/2 -translate-x-1/2 -translate-y-1/2 text-lg fa-solid fa-check"></div>
+    </div>
+  </div>
+  <div class="form-outer overflow-hidden">
+    <form action="" class="flex">
+      <div class="page w-1/4 first-page">
+        <div class="title text-left text-2xl font-medium">
+          Basic Info:
+        </div> <!-- title -->
+        <div class="field flex relative h-11 w-80 m-0 my-11">
+          <label class="absolute -top-8 font-normal">First Name</label>
+          <input id="fName" required class=" fill-none h-full w-full px-7 border-b-2 border-solid border-gray-200  outline-none" type="text">
+          <i class="fa-solid fa-address-card email absolute  text-xl top-1/2 left-0 text-gray-400 -translate-y-1/2"></i>
+        </div> <!-- field -->
+        <div class="field flex relative h-11 w-80 m-0 my-11">
+          <label class="absolute -top-8 font-normal">Last Name</label>
+          <input id="lName" required class="h-full w-full px-7 border-b-2 border-solid border-gray-200  outline-none" type="text">
+          <i class="fa-solid fa-address-card email absolute  text-xl top-1/2 left-0 text-gray-400 -translate-y-1/2"></i>
+        </div> <!-- field -->
+        <div class="field flex relative h-11 w-80 m-0 my-11">
+          <div class="first-next  cursor-pointer next text-lg ml-1 bg-second text-white  py-2 mt-5 w-full rounded-lg hover:bg-hover h-full">Next</div>
+        </div>
+      </div> <!-- page -->
+      <div class="page w-1/4 second-page">
+        <div class="title text-left text-2xl font-medium">
+          Contact Info:
+        </div> <!-- title -->
+        <div class="field flex relative h-11 w-80 m-0 my-11">
+          <label class="absolute -top-8 font-normal">Email Address</label>
+          <input id="Email" required class="h-full w-full px-7 border-b-2 border-solid border-gray-200  outline-none" type="email">
+          <i class="fa-solid fa-envelope email absolute  text-xl top-1/2 left-0 text-gray-400 -translate-y-1/2"></i>
+
+        </div> <!-- field -->
+        <div class="field relative h-11 w-80 m-0 my-11">
+          <label class="absolute -top-8 font-normal">Phone Number</label>
+          <input id="phone" required class="h-full w-full px-7 border-b-2 border-solid border-gray-200  outline-none" type="number">
+          <i class="fa-solid fa-phone email absolute  text-xl top-1/2 left-0 text-gray-400 -translate-y-1/2"></i>
+
+        </div> <!-- field -->
+        <div class="field flex btns relative h-11 w-80 m-0 my-11">
+          <div class="prev-1 prev cursor-pointer  text-lg mr-1 bg-second text-white  py-2 mt-5 w-full rounded-lg hover:bg-hover h-full">Previous</div>
+          <div class="next-1 next cursor-pointer  text-lg ml-1 bg-second text-white  py-2 mt-5 w-full rounded-lg hover:bg-hover h-full">Next</div>
+        </div>
+      </div> <!-- page -->
+      <div class="page w-1/4 third-page">
+        <div class="title text-left text-2xl font-medium">
+          Date Of Birth:
+        </div> <!-- title -->
+        <div class="field flex relative h-11 w-80 m-0 my-11">
+          <label class="absolute -top-8 font-normal">Birth Date</label>
+          <input id="bDate" required class="h-full w-full px-7 border-b-2 border-solid border-gray-200  outline-none" type="date">
+          <i class="fa-solid fa-calendar-alt email absolute  text-xl top-1/2 left-0 text-gray-400 -translate-y-1/2"></i>
+
+        </div> <!-- field -->
+        <div class="field flex relative  h-11 w-80 m-0 my-11">
+          <label class="absolute -top-8 font-normal">Gender</label>
+          <select class="w-full pl-3 text-lg font-medium" name="" id="gender">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
+        </div> <!-- field -->
+        <div class="field flex btns relative h-11 w-80 m-0 my-11">
+          <div class="prev-2 prev cursor-pointer  text-lg mr-1 bg-second text-white  py-2 mt-5 w-full rounded-lg hover:bg-hover h-full">Previous</div>
+          <div class="next-2 next cursor-pointer  text-lg ml-1 bg-second text-white  py-2 mt-5 w-full rounded-lg hover:bg-hover h-full">Next</div>
+        </div>
+      </div> <!-- page -->
+      <div class="page w-1/4 last-page">
+        <div class="title text-left text-2xl font-medium">
+          Log In Details:
+        </div> <!-- title -->
+        <div class="field flex relative h-11 w-80 m-0 my-11">
+          <label class="absolute -top-8 font-normal">User Name</label>
+          <input type="text" required class="h-full w-full px-7 border-b-2 border-solid border-gray-200  outline-none"  name="userName" id="user">
+          <i class="fa-solid fa-user userName absolute  text-xl top-1/2 left-0 text-gray-400 -translate-y-1/2"></i>
+        </div> <!-- field -->
+        <div class="field flex relative h-11 w-80 m-0 my-11">
+          <label class="absolute -top-8 font-normal">Password</label>
+          <input id="password" required class="h-full w-full px-7 border-b-2 border-solid border-gray-200  outline-none"" type="password" name="" id="">
+          <i class="fa-solid fa-lock password absolute  text-xl top-1/2 left-0 text-gray-400 -translate-y-1/2"></i>
+          <i
+            class="fa-solid fa-eye-slash pwHide absolute text-xl top-1/2 right-0 cursor-pointer text-gray-400 -translate-y-1/2"></i>
+        </div> <!-- field -->
+        <div class="field flex btns relative h-11 w-80 m-0 my-11">
+          <div class="prev-3 prev cursor-pointer  text-lg mr-1 bg-second text-white  py-2 mt-5 w-full rounded-lg hover:bg-hover h-full">Previous</div>
+          <div class="submitBtn alertShow next cursor-pointer  text-lg ml-1 bg-second text-white  py-2 mt-5 w-full rounded-lg hover:bg-hover h-full">Submit</div>
+        </div>
+      </div> <!-- page -->
+
+    </form>
+  </div>
+</div>
+</main>
+
+
+  <!-- <script src="./js/jquery.js"></script> -->
+  <script src="./js/signup.js"></script>
+</body>
+
+</html>

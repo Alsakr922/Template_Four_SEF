@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./dist/output.css">
+  <link rel="stylesheet" href="./css/all.min.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <title>cart</title>
+</head>
+<body>
+  <header class="flex items-center justify-between px-20 py-5 bg-back shadow-md shadow-gray-300  z-50 w-screen">
+    <a href="#"><img src="./img/logo.png" class="logo" alt=""></a>
+    <div class="navbar text-2xl">
+      <ul id="navbarlist " class="flex justify-between items-center">
+        <li><a class="active text-black px-5" href="index.html" class="px-5">Home</a></li>
+        <li><a class="text-black px-5" href="#" class="">Shop</a></li>
+        <li><a class="text-black px-5" href="#" class="">Blog</a></li>
+        <li><a class="text-black px-5" href="#" class="">About</a></li>
+        <li><a class="text-black px-5" href="#" class="">Contact</a></li>
+              <li><a class="text-black py-2 px-2 mx-3 rounded-full" href="#">
+                <input onkeyup="searchFn(this.value)" type="search"  class="search border-b-2 border-solid border-gray-200  outline-none" name="search" id="searchInput">
+                <i id="searchIconBtn" class="fa-solid fa-search"></i></a></li>
+
+        <li><a class="text-black px-5" href="cart.html" class=""><i class="fas fa-shopping-bag"></i></a></li>
+      </ul>
+    </div> <!-- navbar -->
+  </header>
+
+  <main class="cart-main text-center text-white py-20">
+    <h1 class="text-8xl  ">Cart</h1>
+    <p class="text-2xl py-5 main-title">Your Favorite Items And Your Carts</p>
+  </main>
+  <section class="my-10 table-section">
+    <table class="w-4/5 m-auto text-center">
+      <thead class="tablehead p-10 text-main uppercase text-2xl mb-5 "> 
+        <td class="py-5 font-semibold">Remove</td>
+        <td class="py-5 font-semibold">Image</td>
+        <td class="py-5 font-semibold">Product</td>
+        <td class="py-5 font-semibold">Brand</td>
+        <td class="py-5 font-semibold">Price</td>
+        <td class="py-5 font-semibold">ADS</td>
+        <!-- <td class="py-5 font-semibold">َQuantity</td> -->
+        <!-- <td class="py-5 font-semibold">َTotal</td> -->
+      </thead>
+      <tbody id="productscart" class="mt-5 text-lg">
+
+      </tbody>
+      <tfoot>
+        <td colspan="6" class="py-5">
+        <button class="removeCartBtn w-full hover:bg-red-900 transition-all transition-500 py-1 px-2 text-center text-lg bg-red-500 rounded-lg " onclick="removeAllCartsProducts()">Remove All Carts Products</button>
+        </td>
+      </tfoot>
+    </table>
+  </section>
+  <section class="products px-20 py-10">
+    <h1 class="text-center p-4 text-6xl">Loving Products</h1>
+      <h4 class="text-center loveDescription text-gray-400"></h4>
+    <div class="productsLove py-10  grid lg:grid-cols-6 md:grid-cols-4 sm:grid-cols-2 gap-10">
+
+
+
+    </div> <!-- grid -->
+        <button
+          class="removeAllLoveBtn w-full hover:bg-red-900 transition-all transition-500 py-1 px-2 text-center text-lg bg-red-500 rounded-lg "
+          onclick="removeAllLovesProducts()">Remove All Loves Products</button>
+  </section> <!-- products -->
+  <section class="p-10 flex justify-between section-coupon items-center">
+    <div class="coupon">
+      <h3 class="text-4xl py-5">Apply Coupon</h3>
+      <input type="text" class="text-lg outline-none m-auto rounded-lg py-3 px-2" name="Coupen" id="coupon" placeholder="Enter Your Coupon">
+      <button class="hover:bg-hover transition-all transition-500 py-3 px-2 text-center text-lg ml-0 ms-0 bg-main rounded-lg ">Apply</button>
+    </div> <!-- coupon -->
+    <div class="cartTotals p-10 px-96 border border-solid border-main">
+      <h3 class="text-4xl p-5 mb-5">Cart Totals</h3>
+      
+      <table class="totals text-xl text-gray-500">
+        <tr>
+          <td>Total</td>
+          <td id="total"></td>
+        </tr>
+        <tr>
+          <td>ADS</td>
+          <td id="ads"></td>
+        </tr>
+        <tr>
+          <td>Totals</td>
+          <td id="totals"></td>
+        </tr>
+      </table>
+      <button class="hover:bg-hover transition-all transition-500 py-3 mt-5 px-8 text-center text-lg ml-0 ms-0 bg-main rounded-lg ">Procced To Checkout</button>
+    </div> <!-- cartTotals -->
+  </section>
+<footer class=" px-20 py-20">
+  <div class="grid lg:grid-cols-3 md:grid-cols-1 text-gray-700">
+    <ul class="contact ">
+      <img src="./img/logo.png" class="logo" alt="">
+      <p class="my-5 font-semibold text-lg">Contact</p>
+      <ul class="pb-5">
+        <li><span class="font-bold text-gray-600">Address</span> 362 Welltnatcn Rood. Street 32 Son Francisco</li>
+        <li><span class="font-bold text-gray-600">PHONE</span> +01 2222 365 /(+91) 01 2345 6789</li>
+        <li><span class="font-bold text-gray-600">HOURS</span> 10:00 - 18:00 ,Mon - Sat</li>
+      </ul>
+      <p class="my-5 font-semibold text-lg">Follow Us</p>
+      <ul class="flex ">
+        <li><i
+            class="fa-brands fa-facebook mr-3 hover:text-main hover:cursor-pointer hover:scale-125 transition-all transition-400"></i>
+        </li>
+        <li><i
+            class="fa-brands fa-twitter mr-3 hover:text-main hover:cursor-pointer hover:scale-125 transition-all transition-400"></i>
+        </li>
+        <li><i
+            class="fa-brands fa-instagram mr-3 hover:text-main hover:cursor-pointer hover:scale-125 transition-all transition-400"></i>
+        </li>
+        <li><i
+            class="fa-brands fa-youtube mr-3 hover:text-main hover:cursor-pointer hover:scale-125 transition-all transition-400"></i>
+        </li>
+      </ul>
+    </ul> <!-- contact -->
+    <div class="grid grid-cols-2">
+      <ul class="about">
+        <p class="my-5 font-semibold text-lg">About</p>
+        <li>About Us</li>
+        <li>Delivery Information</li>
+        <li>Privacy Policy</li>
+        <li>terms & Conditions</li>
+        <li>Contact Us</li>
+      </ul> <!-- about -->
+      <ul class="account">
+        <p class="my-5 font-semibold text-lg">My Account</p>
+        <li>Sign In</li>
+        <li>View Cart</li>
+        <li>My Wishlist</li>
+        <li>Track My Order</li>
+        <li>Help</li>
+      </ul> <!-- acount -->
+    </div> <!-- grid-2 -->
+    <ul class="app">
+      <p class="my-5 font-semibold text-lg">About</p>
+      <li>From App Store Or Google Play</li>
+      <div class="btns flex flex-row mt-5 gap-5">
+        <img src="./img/pay/app.jpg" class="border-main-1 rounded hover:cursor-pointer" alt="">
+        <img src="./img/pay/play.jpg" class="border-main-1 rounded hover:cursor-pointer" alt="">
+      </div>
+      <li>Secured Payment Gateways</li>
+      <img src="./img/pay/pay.png" class="ml-5 mt-3" alt="">
+    </ul>
+  </div> <!-- grid-1 -->
+</footer>
+
+
+
+
+
+<!-- <script src="./js/all.min.js"></script> -->
+<script src="./js/cart.js"></script>
+</body>
+</html>

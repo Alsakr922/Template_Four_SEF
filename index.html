@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./dist/output.css">
+    <link rel="stylesheet" href="./css/all.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <title>Clotak</title>
+</head>
+<body>
+    <div class="overflow-hidden alertParent top-10 z-50 ">
+      <div
+        class="alert hide bg-main px-10 py-5 fixed w-96 top-20 right-0 overflow-hidden rounded border-l-8 border-solid border-l-green-600">
+        <span class="fa-solid alertIcon absolute left-5 top-1/2 -translate-y-1/2 text-second text-3xl"></span>
+        <span class="msg py-0 px-5 text-white text-sm" id="alertMsg"></span>
+        <span class="closeBtn absolute right-0 top-1/2 -translate-y-1/2 bg-main hover:bg-hover cursor-pointer py-5 px-4">
+          <span id="alertHide" class="fa-solid fa-times text-xl text-second "></span>
+        </span>
+      </div>
+    </div>
+  <i id="topBtn" class="fa-solid fa-caret-up  bottom-5 right-10 topBtn fa-3x fixed z-50 text-main"></i>
+<header class="flex items-center justify-between px-20 py-5 bg-back shadow-md shadow-gray-300 fixed z-20 w-screen">
+  <a href="#"><img src="./img/logo.png" class="logo" alt=""></a>
+  <div class="navbare text-2xl">
+    <ul id="navbars " class="flex relative justify-between items-center">
+      <li><a class="active text-black px-5" href="index.html" class="px-5">Home</a></li>
+      <li><a class="text-black px-5" href="#">Shop</a></li>
+      <li><a class="text-black px-5" href="#">Blog</a></li>
+      <li><a class="text-black px-5" href="#">About</a></li>
+      <li><a class="text-black px-5" href="#">Contact</a></li>
+      <li><a class="text-black bg-main py-2 px-8 rounded-xl" href="#" id="openForm">Log In</a></li>
+      <li><a class="text-black py-2 px-2 mx-3 rounded-full" href="#" id="search"><i class="fa-solid fa-search"></i></a></li>
+      <li id="users" class="px-5 relative"><i  class="fa-solid  fa-user-circle cursor-pointer hover:text-main"></i>
+        <ul id="userSign" class="absolute pt-5 px-5 -right-1 top-16 text-lg rounded bg-back">
+          <li class="py-2" >User Name : <span id="userName"></span></li>
+          <li class="py-2" >E-mail : <span id="userEmail"></span></li>
+          <li class="py-2" id="inLove"><i class="fa-solid fa-heart text-red-500"></i> : <span></span></li>
+          <li class="py-2" id="inCart"><i class=" fas fa-shopping-bag text-second"></i> : <span></span></li>
+          <li class="py-2"><button class="" id="logOutBtn">Log Out</button></li>
+        </ul> <!-- userSignOut -->
+      </li>
+      
+      <li><a class="relative text-black px-5 " ><i class="fas fa-shopping-cart z-50" id="cartBag"></i>
+      <small class="absolute counted rounded-full bg-main"></small></a></li>
+      <li><a href="#" class="bord top-8 righ-8"></a></li>
+  </ul>
+  </div> <!-- navbar -->
+  <ul id="shopList" class="absolute top-20 right-20 text-lg bg-back px-5 py-2">
+    <div id="shopListe" class="">
+
+    </div>
+<hr class="border-main">
+<div class="my-4 text-second cursor-pointer" id="goToCart">Go To Cart</div>
+  </ul>
+</header>
+<label>
+  <div class="form bg-white p-6 rounded-xl max-w-sm absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+    <div class="forms">
+      <i class="fa-solid fa-times formClose absolute top-3 right-5 text-main text-xl cursor-pointer opacity-70"></i>
+      <div class="logIn">
+        <h2 class="text-2xl font-semibold text-center">Log In</h2>
+        <form class="relative mt-8 w-full h-10">
+          <input type="text" required class="h-full w-full px-7 border-b-2 border-solid border-gray-200  outline-none" placeholder="User Name" name="userName" id="userNameInput">
+          <i class="fa-solid fa-user userName absolute  text-xl top-1/2 left-0 text-gray-400 -translate-y-1/2"></i>
+        </form>
+        <form class="relative mt-8 w-full h-10">
+          <input type="email" required class="h-full w-full px-7 border-b-2 border-solid border-gray-200  outline-none"
+            placeholder="E-mail" name="email" id="email">
+          <i class="fa-solid fa-envelope email absolute  text-xl top-1/2 left-0 text-gray-400 -translate-y-1/2"></i>
+        </form>
+        <form class="relative mt-8 w-full h-10">
+          <input type="password" required
+            class="h-full w-full px-7 border-b-2 border-solid border-gray-200  outline-none" placeholder="Password"
+            name="password" id="password">
+          <i class="fa-solid fa-lock password absolute  text-xl top-1/2 left-0 text-gray-400 -translate-y-1/2"></i>
+          <i
+            class="fa-solid fa-eye-slash pwHide absolute text-xl top-1/2 right-0 cursor-pointer text-gray-400 -translate-y-1/2"></i>
+        </form>
+        <form class="optionField mt-4 flex justify-between items-center">
+          <span class="checkbox flex whitespace-nowrap">
+            <input type="checkbox" class="accent-second" name="" id="check">
+            <label for="check" class="p-3 select-none">Remember Me</label>
+          </span>
+          <a href="" class="text-second " id="forgotPw">Forgot Password!</a>
+        </form>
+        <button id="logIn" class="bg-second text-white  py-2 mt-5 w-full rounded-lg">Log In</button>
+        <div class="loginSignup">Already have an acount ? <a href="signup.html" class=" text-main">Sign Up</a></div>
+      </div> <!-- logIn -->
+
+
+    </div> <!-- forms -->
+  </div> <!-- sign -->
+</label>
+<section class="hero  px-20 flex flex-col items-start justify-center">
+  <h4 class="lg:text-2xl sm:text-sm pb-3">Trade-In-Offer</h4>
+  <h2 class="lg:text-6xl sm:text-2xl pb-3">Super value deals</h2>
+  <h1 class="lg:text-6xl sm:text-2xl text-hover pb-3">On all products</h1>
+  <p class="lg:text-2xl sm:text-sm text-gray-500 pb-3">Save more with coupons & 70% up to off!</p>
+  <button class="main-btn">Shop Now</button>
+</section> <!-- hero -->
+<section class="features grid xl:grid-cols-6 lg:grid-cols-6 md:grid-cols-3 sm:grid-cols-2 px-20 py-10">
+  <div class="box rounded my-4 mx-0 text-center py-6">
+    <img src="./img/features/f1.png" class="p-3" alt="">
+    <h6 class="inline-block f1 mt-1 rounded text-main">Free Shipping</h6>
+  </div> <!-- box -->
+  <div class="box rounded my-4 mx-0 text-center py-6">
+    <img src="./img/features/f2.png" class="p-3" alt="">
+    <h6 class="inline-block f2 mt-1 rounded text-main">Online Order</h6>
+  </div> <!-- box -->
+  <div class="box rounded my-4 mx-0 text-center py-6">
+    <img src="./img/features/f3.png" class="p-3" alt="">
+    <h6 class="inline-block f3 mt-1 rounded text-main">Save Money</h6>
+  </div> <!-- box -->
+  <div class="box rounded my-4 mx-0 text-center py-6">
+    <img src="./img/features/f4.png" class="p-3" alt="">
+    <h6 class="inline-block f4 mt-1 rounded text-main">Promotions</h6>
+  </div> <!-- box -->
+  <div class="box rounded my-4 mx-0 text-center py-6">
+    <img src="./img/features/f5.png" class="p-3" alt="">
+    <h6 class="inline-block f5 mt-1 rounded text-main">Happy Sell</h6>
+  </div> <!-- box -->
+  <div class="box rounded my-4 mx-0 text-center py-6">
+    <img src="./img/features/f6.png" class="p-3" alt="">
+    <h6 class="inline-block f6 mt-1 rounded text-main">F24/7 Support</h6>
+  </div> <!-- box -->
+</section> <!-- features -->
+<section class="products px-20 py-10">
+  <h1 class="text-center p-4 text-6xl">Featured Products</h1>
+  <h4 class="text-center text-gray-400">Summer Collection New Morden Design</h4>
+  <div class="products py-10  grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-10">
+    <div class="product relative p-4 border-gray-300 rounded-xl">
+      <img src="./img/products/f1.jpg" class="rounded-xl" alt="">
+      <div class="description pt-3">
+        <h6 class="text-gray-400">adidas</h6>
+        <h4 class="">Cartoon Astronaut T -Shirts 1</h4>
+        <div class="stars text-yellow-300 py-1">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+        </div> <!-- stars -->
+        <h3 class="text-hover font-bold text-2xl product-price">$<span>60</span></h3>
+        <i class="fa-solid fa-shopping-cart absolute bottom-3 right-5 hover:bg-hover hover:text-white text-hover cursor-pointer transition-600 transition-all rounded-full fa-lg p-4"></i>
+        <i class="fa-solid fa-heart heartBtn absolute bottom-3 right-16 hover:bg-hover hover:text-white text-hover cursor-pointer transition-600 transition-all rounded-full fa-lg p-4"></i>
+      </div> <!-- description -->
+    </div> <!-- product -->
+    <div class="product relative p-4 border-gray-300 rounded-xl">
+      <img src="./img/products/f2.jpg" class="rounded-xl" alt="">
+      <div class="description pt-3">
+        <h6 class="text-gray-400">puma</h6>
+        <h4 class="">Cartoon Astronaut T -Shirts 2</h4>
+        <div class="stars text-yellow-300 py-1">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+        </div> <!-- stars -->
+        <h3 class="text-hover font-bold text-2xl product-price">$<span>70</span></h3>
+        <i class="fa-solid fa-shopping-cart absolute bottom-3 right-5 hover:bg-hover hover:text-white text-hover cursor-pointer transition-600 transition-all rounded-full fa-lg p-4"></i>
+        <i class="fa-solid fa-heart heartBtn absolute bottom-3 right-16 hover:bg-hover hover:text-white text-hover cursor-pointer transition-600 transition-all rounded-full fa-lg p-4"></i>
+
+      </div> <!-- description -->
+    </div> <!-- product -->
+    <div class="product relative p-4 border-gray-300 rounded-xl">
+      <img src="./img/products/f3.jpg" class="rounded-xl" alt="">
+      <div class="description pt-3">
+        <h6 class="text-gray-400">team</h6>
+        <h4 class="">Cartoon Astronaut T -Shirts 3</h4>
+        <div class="stars text-yellow-300 py-1">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+        </div> <!-- stars -->
+        <h3 class="text-hover font-bold text-2xl product-price">$<span>70</span></h3>
+        <i class="fa-solid fa-heart heartBtn absolute bottom-3 right-16 hover:bg-hover hover:text-white text-hover cursor-pointer transition-600 transition-all rounded-full fa-lg p-4"></i>
+        <i class="fa-solid fa-shopping-cart absolute bottom-3 right-5 hover:bg-hover hover:text-white text-hover cursor-pointer transition-600 transition-all rounded-full fa-lg p-4"></i>
+      </div> <!-- description -->
+    </div> <!-- product -->
+    <div class="product relative p-4 border-gray-300 rounded-xl">
+      <img src="./img/products/f4.jpg" class="rounded-xl" alt="">
+      <div class="description pt-3">
+        <h6 class="text-gray-400">team</h6>
+        <h4 class="">Cartoon Astronaut T -Shirts 4</h4>
+        <div class="stars text-yellow-300 py-1">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+        </div> <!-- stars -->
+        <h3 class="text-hover font-bold text-2xl product-price">$<span>70</span></h3>
+        <i
+          class="fa-solid fa-shopping-cart absolute bottom-3 right-5 hover:bg-hover hover:text-white text-hover cursor-pointer transition-600 transition-all rounded-full fa-lg p-4"></i>
+        <i
+          class="fa-solid fa-heart heartBtn absolute bottom-3 right-16 hover:bg-hover hover:text-white text-hover cursor-pointer transition-600 transition-all rounded-full fa-lg p-4"></i>
+      </div> <!-- description -->
+    </div> <!-- product -->
+    <div class="product relative p-4 border-gray-300 rounded-xl">
+      <img src="./img/products/f5.jpg" class="rounded-xl" alt="">
+      <div class="description pt-3">
+        <h6 class="text-gray-400">adidas</h6>
+        <h4 class="">Cartoon Astronaut T -Shirts 5</h4>
+        <div class="stars text-yellow-300 py-1">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+        </div> <!-- stars -->
+        <h3 class="text-hover font-bold text-2xl product-price">$<span>70</span></h3>
+        <i
+          class="fa-solid fa-shopping-cart absolute bottom-3 right-5 hover:bg-hover hover:text-white text-hover cursor-pointer transition-600 transition-all rounded-full fa-lg p-4"></i>
+        <i
+          class="fa-solid fa-heart heartBtn absolute bottom-3 right-16 hover:bg-hover hover:text-white text-hover cursor-pointer transition-600 transition-all rounded-full fa-lg p-4"></i>
+      </div> <!-- description -->
+    </div> <!-- product -->
+    <div class="product relative p-4 border-gray-300 rounded-xl">
+      <img src="./img/products/f1.jpg" class="rounded-xl" alt="">
+      <div class="description pt-3">
+        <h6 class="text-gray-400">puma</h6>
+        <h4 class="">Cartoon Astronaut T -Shirts 6</h4>
+        <div class="stars text-yellow-300 py-1">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+        </div> <!-- stars -->
+        <h3 class="text-hover font-bold text-2xl product-price">$<span>70</span></h3>
+        <i
+          class="fa-solid fa-shopping-cart absolute bottom-3 right-5 hover:bg-hover hover:text-white text-hover cursor-pointer transition-600 transition-all rounded-full fa-lg p-4"></i>
+        <i
+          class="fa-solid fa-heart heartBtn absolute bottom-3 right-16 hover:bg-hover hover:text-white text-hover cursor-pointer transition-600 transition-all rounded-full fa-lg p-4"></i>
+      </div> <!-- description -->
+    </div> <!-- product -->
+    <div class="product relative p-4 border-gray-300 rounded-xl">
+      <img src="./img/products/f1.jpg" class="rounded-xl" alt="">
+      <div class="description pt-3">
+        <h6 class="text-gray-400">adidas</h6>
+        <h4 class="">Cartoon Astronaut T -Shirts 7</h4>
+        <div class="stars text-yellow-300 py-1">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+        </div> <!-- stars -->
+        <h3 class="text-hover font-bold text-2xl product-price">$<span>70</span></h3>
+        <i
+          class="fa-solid fa-shopping-cart absolute bottom-3 right-5 hover:bg-hover hover:text-white text-hover cursor-pointer transition-600 transition-all rounded-full fa-lg p-4"></i>
+        <i
+          class="fa-solid fa-heart heartBtn absolute bottom-3 right-16 hover:bg-hover hover:text-white text-hover cursor-pointer transition-600 transition-all rounded-full fa-lg p-4"></i>
+      </div> <!-- description -->
+    </div> <!-- product -->
+    <div class="product relative p-4 border-gray-300 rounded-xl">
+      <img src="./img/products/f1.jpg" class="rounded-xl" alt="">
+      <div class="description pt-3">
+        <h6 class="text-gray-400">team</h6>
+        <h4 class="">Cartoon Astronaut T -Shirts 8</h4>
+        <div class="stars text-yellow-300 py-1">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+        </div> <!-- stars -->
+        <h3 class="text-hover font-bold text-2xl product-price">$<span>70</span></h3>
+        <i
+          class="fa-solid fa-shopping-cart absolute bottom-3 right-5 hover:bg-hover hover:text-white text-hover cursor-pointer transition-600 transition-all rounded-full fa-lg p-4"></i>
+        <i
+          class="fa-solid fa-heart heartBtn absolute bottom-3 right-16 hover:bg-hover hover:text-white text-hover cursor-pointer transition-600 transition-all rounded-full fa-lg p-4"></i>
+      </div> <!-- description -->
+    </div> <!-- product -->
+  </div> <!-- grid -->
+</section> <!-- products -->
+<section class="add my-5 flex flex-col items-center justify-center text-white  py-20 text-center">
+  <h4 class="font-semibold  text-white">Repair Services</h4>
+  <h1 class="font-semibold my-7 text-white">Up to <span class="font-medium">70% Off</span>  — All t-Shirts & Accessories</h1>
+  <button class="px-10 py-4 bg-white rounded text-main hover:bg-hover hover:text-white transition-all transition-200">Explore More</button>
+</section> <!-- add -->
+<section class="carousels px-20 py-10">
+  <h1 class="text-center p-4 text-6xl">Featured Products</h1>
+  <h4 class="text-center text-gray-400">Summer Collection New Morden Design</h4>
+  <div class="wrapper products flex items-center justify-center py-10 relative">
+    <i id="left" class="fa-solid fa-angle-left angels z-40 w-8 h-8 rounded-full p-4 absolute -left-6 top-1/2 -translate-y-1/2 text-6xl   cursor-pointer  hover:text-main transition-all transition-500"></i>
+    <ul class="carousel grid grid-flow-col overflow-hidden gap-10">
+      <li class="card product relative p-4 border-gray-300 rounded-xl">
+        <img src="./img/products/n1.jpg" draggable="false" class="rounded-xl" alt="">
+        <div class="description pt-3">
+          <h6 class="text-gray-400">adidas</h6>
+          <h4 class="">Cartoon Astronaut T -Shirts 9</h4>
+          <div class="stars text-yellow-300 py-1">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div> <!-- stars -->
+          <h3 class="text-hover font-bold text-2xl product-price">$<span>70</span></h3>
+        </div> <!-- description -->
+        <i
+          class="fa-solid fa-shopping-cart absolute bottom-3 right-5 hover:bg-hover hover:text-white text-hover cursor-pointer transition-600 transition-all rounded-full fa-lg p-4"></i>
+        <i
+          class="fa-solid fa-heart heartBtn absolute bottom-3 right-16 hover:bg-hover hover:text-white text-hover cursor-pointer transition-600 transition-all rounded-full fa-lg p-4"></i>
+      </li> <!-- card -->
+      <li class="card relative product p-4 border-gray-300 rounded-xl">
+        <img src="./img/products/n2.jpg" draggable="false" class="rounded-xl" alt="">
+        <div class="description pt-3">
+          <h6 class="text-gray-400">adidas</h6>
+          <h4 class="">Cartoon Astronaut T -Shirts 10</h4>
+          <div class="stars text-yellow-300 py-1">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div> <!-- stars -->
+          <h3 class="text-hover font-bold text-2xl product-price">$<span>70</span></h3>
+        </div> <!-- description -->
+        <i
+          class="fa-solid fa-shopping-cart absolute bottom-3 right-5 hover:bg-hover hover:text-white text-hover cursor-pointer transition-600 transition-all rounded-full fa-lg p-4"></i>
+        <i
+          class="fa-solid fa-heart heartBtn absolute bottom-3 right-16 hover:bg-hover hover:text-white text-hover cursor-pointer transition-600 transition-all rounded-full fa-lg p-4"></i>
+      </li> <!-- card -->
+      <li class="card relative product p-4 border-gray-300 rounded-xl">
+        <img src="./img/products/n3.jpg" draggable="false" class="rounded-xl" alt="">
+        <div class="description pt-3">
+          <h6 class="text-gray-400">adidas</h6>
+          <h4 class="">Cartoon Astronaut T -Shirts 11</h4>
+          <div class="stars text-yellow-300 py-1">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div> <!-- stars -->
+          <h3 class="text-hover font-bold text-2xl product-price">$<span>70</span></h3>
+        </div> <!-- description -->
+        <i
+          class="fa-solid fa-shopping-cart absolute bottom-3 right-5 hover:bg-hover hover:text-white text-hover cursor-pointer transition-600 transition-all rounded-full fa-lg p-4"></i>
+        <i
+          class="fa-solid fa-heart heartBtn absolute bottom-3 right-16 hover:bg-hover hover:text-white text-hover cursor-pointer transition-600 transition-all rounded-full fa-lg p-4"></i>
+      </li> <!-- card -->
+      <li class="card relative product p-4 border-gray-300 rounded-xl">
+        <img src="./img/products/n4.jpg" draggable="false" class="rounded-xl" alt="">
+        <div class="description pt-3">
+          <h6 class="text-gray-400">adidas</h6>
+          <h4 class="">Cartoon Astronaut T -Shirts 12</h4>
+          <div class="stars text-yellow-300 py-1">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div> <!-- stars -->
+          <h3 class="text-hover font-bold text-2xl product-price">$<span>70</span></h3>
+        </div> <!-- description -->
+        <i
+          class="fa-solid fa-shopping-cart absolute bottom-3 right-5 hover:bg-hover hover:text-white text-hover cursor-pointer transition-600 transition-all rounded-full fa-lg p-4"></i>
+        <i
+          class="fa-solid fa-heart heartBtn absolute bottom-3 right-16 hover:bg-hover hover:text-white text-hover cursor-pointer transition-600 transition-all rounded-full fa-lg p-4"></i>
+      </li> <!-- card -->
+      <li class="card relative product p-4 border-gray-300 rounded-xl">
+        <img src="./img/products/n5.jpg" draggable="false" class="rounded-xl" alt="">
+        <div class="description pt-3">
+          <h6 class="text-gray-400">adidas</h6>
+          <h4 class="">Cartoon Astronaut T -Shirts 13</h4>
+          <div class="stars text-yellow-300 py-1">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div> <!-- stars -->
+          <h3 class="text-hover font-bold text-2xl product-price">$<span>70</span></h3>
+        </div> <!-- description -->
+        <i
+          class="fa-solid fa-shopping-cart absolute bottom-3 right-5 hover:bg-hover hover:text-white text-hover cursor-pointer transition-600 transition-all rounded-full fa-lg p-4"></i>
+        <i
+          class="fa-solid fa-heart heartBtn absolute bottom-3 right-16 hover:bg-hover hover:text-white text-hover cursor-pointer transition-600 transition-all rounded-full fa-lg p-4"></i>
+      </li> <!-- card -->
+      <li class="card relative product p-4 border-gray-300 rounded-xl">
+        <img src="./img/products/n6.jpg" draggable="false" class="rounded-xl" alt="">
+        <div class="description pt-3">
+          <h6 class="text-gray-400">adidas</h6>
+          <h4 class="">Cartoon Astronaut T -Shirts 14</h4>
+          <div class="stars text-yellow-300 py-1">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div> <!-- stars -->
+          <h3 class="text-hover font-bold text-2xl product-price">$<span>70</span></h3>
+        </div> <!-- description -->
+        <i
+          class="fa-solid fa-shopping-cart absolute bottom-3 right-5 hover:bg-hover hover:text-white text-hover cursor-pointer transition-600 transition-all rounded-full fa-lg p-4"></i>
+        <i
+          class="fa-solid fa-heart heartBtn absolute bottom-3 right-16 hover:bg-hover hover:text-white text-hover cursor-pointer transition-600 transition-all rounded-full fa-lg p-4"></i>
+      </li> <!-- card -->
+      <li class="card relative product p-4 border-gray-300 rounded-xl">
+        <img src="./img/products/n7.jpg" draggable="false" class="rounded-xl" alt="">
+        <div class="description pt-3">
+          <h6 class="text-gray-400">adidas</h6>
+          <h4 class="">Cartoon Astronaut T -Shirts 15</h4>
+          <div class="stars text-yellow-300 py-1">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div> <!-- stars -->
+          <h3 class="text-hover font-bold text-2xl product-price">$<span>70</span></h3>
+        </div> <!-- description -->
+        <i
+          class="fa-solid fa-shopping-cart absolute bottom-3 right-5 hover:bg-hover hover:text-white text-hover cursor-pointer transition-600 transition-all rounded-full fa-lg p-4"></i>
+        <i
+          class="fa-solid fa-heart heartBtn absolute bottom-3 right-16 hover:bg-hover hover:text-white text-hover cursor-pointer transition-600 transition-all rounded-full fa-lg p-4"></i>
+      </li> <!-- card -->
+      <li class="card relative product p-4 border-gray-300 rounded-xl">
+        <img src="./img/products/n8.jpg" draggable="false" class="rounded-xl" alt="">
+        <div class="description pt-3">
+          <h6 class="text-gray-400">adidas</h6>
+          <h4 class="">Cartoon Astronaut T -Shirts 16</h4>
+          <div class="stars text-yellow-300 py-1">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div> <!-- stars -->
+          <h3 class="text-hover font-bold text-2xl product-price">$<span>70</span></h3>
+        </div> <!-- description -->
+        <i
+          class="fa-solid fa-shopping-cart absolute bottom-3 right-5 hover:bg-hover hover:text-white text-hover cursor-pointer transition-600 transition-all rounded-full fa-lg p-4"></i>
+        <i
+          class="fa-solid fa-heart heartBtn absolute bottom-3 right-16 hover:bg-hover hover:text-white text-hover cursor-pointer transition-600 transition-all rounded-full fa-lg p-4"></i>
+      </li> <!-- card -->
+      <li class="card relative product p-4 border-gray-300 rounded-xl">
+        <img src="./img/products/n1.jpg" draggable="false" class="rounded-xl" alt="">
+        <div class="description pt-3">
+          <h6 class="text-gray-400">adidas</h6>
+          <h4 class="">Cartoon Astronaut T -Shirts 17</h4>
+          <div class="stars text-yellow-300 py-1">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div> <!-- stars -->
+          <h3 class="text-hover font-bold text-2xl product-price">$<span>70</span></h3>
+        </div> <!-- description -->
+        <i
+          class="fa-solid fa-shopping-cart absolute bottom-3 right-5 hover:bg-hover hover:text-white text-hover cursor-pointer transition-600 transition-all rounded-full fa-lg p-4"></i>
+        <i
+          class="fa-solid fa-heart heartBtn absolute bottom-3 right-16 hover:bg-hover hover:text-white text-hover cursor-pointer transition-600 transition-all rounded-full fa-lg p-4"></i>
+      </li> <!-- card -->
+      <li class="card relative product p-4 border-gray-300 rounded-xl">
+        <img src="./img/products/n2.jpg" class="rounded-xl" alt="">
+        <div class="description pt-3">
+          <h6 class="text-gray-400">adidas</h6>
+          <h4 class="">Cartoon Astronaut T -Shirts 18</h4>
+          <div class="stars text-yellow-300 py-1">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div> <!-- stars -->
+          <h3 class="text-hover font-bold text-2xl product-price">$<span>70</span></h3>
+        </div> <!-- description -->
+        <i
+          class="fa-solid fa-shopping-cart absolute bottom-3 right-5 hover:bg-hover hover:text-white text-hover cursor-pointer transition-600 transition-all rounded-full fa-lg p-4"></i>
+        <i
+          class="fa-solid fa-heart heartBtn absolute bottom-3 right-16 hover:bg-hover hover:text-white text-hover cursor-pointer transition-600 transition-all rounded-full fa-lg p-4"></i>
+      </li> <!-- card -->
+    </ul> <!-- carousel -->
+    <i id="right"
+      class="fa-solid fa-angle-right angels z-40 w-8 h-8 rounded-full p-4 absolute -right-6 top-1/2 -translate-y-1/2 text-6xl  cursor-pointer  hover:text-main transition-all transition-500"></i>
+    </div> <!-- wrapper -->
+
+</section> <!-- carousels -->
+<section class="articles px-20 py-10">
+  <div class="grid py-10 articlesOne grid-cols-1 lg:grid-cols-2 gap-10">
+    <div class="box max-w-screen py-52 flex items-start flex-col justify-center p-10 w-full text-white">
+      <h4 class="text-3xl text-white">Crazy Deals</h4>
+      <h3 class="text-4xl py-3">Buy 1 Get 1 free!</h3>
+      <p class="text-lg">best classic dress is on sale at cara</p>
+      <span class="btn bg-main text-center py-3 px-5 w-36 mt-3 cursor-pointer hover:bg-hover transition-all transition-200 text-lg">Learn More</span>
+    </div> <!-- box -->
+    <div class="box py-52 flex items-start flex-col justify-center p-10 w-full text-white">
+      <h4 class="text-3xl text-white">Spring/Summer</h4>
+      <h3 class="text-4xl py-3">Upcomming Season</h3>
+      <p class="text-lg">best classic dress is on sale at cara</p>
+      <span class="btn bg-transparent text-center py-3 px-5 w-36 mt-3 cursor-pointer hover:bg-hover transition-all transition-200 text-lg">Collection</span>
+    </div> <!-- box -->
+  </div> <!-- articlesOne -->
+  <div class="grid articlesTwo grid-cols-3 gap-10">
+    <div class="box flex items-start flex-col justify-center p-10 w-full text-white">
+      <h3 class="text-3xl py-3">SEASONAL SALE</h3>
+      <h4 class="text-2xl text-red-800">Winter Collection -50% OFF</h4>
+    </div> <!-- box -->
+    <div class="box  flex items-start flex-col justify-center p-10 w-full text-white">
+      <h3 class="text-3xl py-3">NEW FOOTWEAR COLLECTION</h3>
+      <h4 class="text-2xl text-red-800">Spring/Summer 2024</h4>
+    </div> <!-- box -->
+    <div class="box flex items-start flex-col justify-center p-10 w-full text-white">
+      <h3 class="text-3xl py-3">T-SHIRTS</h3>
+      <h4 class="text-2xl text-red-800">New Trendy Prints</h4>
+    </div> <!-- box -->
+  </div> <!-- articlesTwo -->
+</section> <!-- articles -->
+<section class="subscripe px-20 py-10">
+  <div class="grid grid-cols-2 justify-between items-center text-white">
+    <div class="subsDiscription">
+      <h1 class="text-white py-3">Sign Up For Newsletters</h1>
+      <p class="text-gray-400">Get E-mail updates about our latest shop and <span class="text-main font-semibold ml-1">special offers.</span></p>
+    </div> <!-- subsDiscription -->
+    <div class="form flex rounded items-center justify-self-end w-max bg-white">
+      <i class="fa-solid fa-envelope fa-2x m-0 ml-4 text-main"></i>
+      <input type="email" name="E-mail" class="text-main text-2xl py-3 px-5 flex-1 w-max w-36 border-none outline-none m-0" id="">
+      <span class="btn bg-main text-center py-4 px-5 cursor-pointer hover:bg-hover transition-all transition-200 text-lg">Subscripe</span>
+    </div> <!-- form -->
+  </div> <!-- grid -->
+</section> <!-- subscripe -->
+<footer class=" px-20 py-20">
+  <div class="grid lg:grid-cols-3 md:grid-cols-1 text-gray-700">
+    <ul class="contact ">
+      <img src="./img/logo.png" class="logo" alt="">
+      <p class="my-5 font-semibold text-lg">Contact</p>
+      <ul class="pb-5">
+      <li><span class="font-bold text-gray-600">Address</span> 362 Welltnatcn Rood. Street 32 Son Francisco</li>
+      <li><span class="font-bold text-gray-600">PHONE</span> +01 2222 365 /(+91) 01 2345 6789</li>
+      <li><span class="font-bold text-gray-600">HOURS</span> 10:00 - 18:00 ,Mon - Sat</li>
+      </ul>
+      <p class="my-5 font-semibold text-lg">Follow Us</p>
+      <ul class="flex ">
+        <li><i class="fa-brands fa-facebook mr-3 hover:text-main hover:cursor-pointer hover:scale-125 transition-all transition-400"></i></li>
+        <li><i class="fa-brands fa-twitter mr-3 hover:text-main hover:cursor-pointer hover:scale-125 transition-all transition-400"></i></li>
+        <li><i class="fa-brands fa-instagram mr-3 hover:text-main hover:cursor-pointer hover:scale-125 transition-all transition-400"></i></li>
+        <li><i class="fa-brands fa-youtube mr-3 hover:text-main hover:cursor-pointer hover:scale-125 transition-all transition-400"></i></li>
+      </ul>
+    </ul> <!-- contact -->
+    <div class="grid grid-cols-2">
+      <ul class="about">
+        <p class="my-5 font-semibold text-lg">About</p>
+        <li>About Us</li>
+        <li>Delivery Information</li>
+        <li>Privacy Policy</li>
+        <li>terms & Conditions</li>
+        <li>Contact Us</li>
+      </ul> <!-- about -->
+      <ul class="account">
+        <p class="my-5 font-semibold text-lg">My Account</p>
+        <li>Sign In</li>
+        <li>View Cart</li>
+        <li>My Wishlist</li>
+        <li>Track My Order</li>
+        <li>Help</li>
+      </ul> <!-- acount -->
+    </div> <!-- grid-2 -->
+    <ul class="app">
+      <p class="my-5 font-semibold text-lg">About</p>
+      <li>From App Store Or Google Play</li>
+      <div class="btns flex flex-row mt-5 gap-5">
+        <img src="./img/pay/app.jpg" class="border-main-1 rounded hover:cursor-pointer" alt="">
+        <img src="./img/pay/play.jpg" class="border-main-1 rounded hover:cursor-pointer" alt="">
+      </div>
+      <li>Secured Payment Gateways</li>
+      <img src="./img/pay/pay.png" class="ml-5 mt-3" alt="">
+    </ul> 
+  </div> <!-- grid-1 -->
+</footer>
+<!-- <script src="./js/all.min.js"></script> -->
+<script src="./js/jquery.js"></script>
+<script src="./js/script.js"></script>
+</body>
+</html>

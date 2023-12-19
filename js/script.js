@@ -1,6 +1,6 @@
-const carousel = document.querySelector(".carousel")
-const angelBtns = document.querySelectorAll(".angels")
-const firstCardWidth = carousel.querySelector(".card").offsetWidth;
+let carousel = document.querySelector(".carousel")
+let angelBtns = document.querySelectorAll(".angels")
+let firstCardWidth = carousel.querySelector(".card").offsetWidth;
 
 
 
@@ -11,17 +11,17 @@ angelBtns.forEach(btn => {
     carousel.scrollLeft += btn.id === "left" ? -firstCardWidth: firstCardWidth
   })
 })
-const dragStop = () => {
+let dragStop = () => {
   isDragging = false;
   carousel.classList.remove("drag");
 }
-const dragStart = (dragE) => {
+let dragStart = (dragE) => {
   isDragging = true;
   carousel.classList.add("drag");
   startX = dragE.pageX;
   startScrllLeft = carousel.scrollLeft;
 }
-const dragging = (dragE) => {
+let dragging = (dragE) => {
   if (!isDragging) return;
   carousel.scrollLeft = startScrllLeft - (dragE.pageX - startX);
 }
@@ -31,33 +31,41 @@ document.addEventListener("mouseup", dragStop)
 
 
 //////////////////////////////////////////////////////////
-// let topBtn = document.getElementById("topBtn")
-//  if (window.screenTop > 300) {
-//   topBtn.style.opacity = '1'
-//   topBtn.style.pointerEvents = 'auto'
-// } else {
-// topBtn.style.opacity = '0'
-//    topBtn.style.pointerEvents = 'none'
-//  }
-// window.addEventListener("scroll", () => {
-//   console.log(window.screenTop)
-// })
+let topBtn = document.getElementById("topBtn")
+
+window.addEventListener("scroll", () => {
+if (window.scrollY > 300) {
+  topBtn.style.display = 'block'
+  topBtn.style.pointerEvents = 'auto'
+} else {
+  topBtn.style.display = 'none'
+  topBtn.style.pointerEvents = 'none'
+  }
+  topBtn.addEventListener("click", () => {
+  window.scrollTo(0,0)
+  })
+}
+)
+
+
 /////////////////////////////////////////////////////////////
-const openForm = document.getElementById("openForm")
-const form = document.querySelector(".form")
-const forms = document.querySelector(".forms")
-const closeForm = document.querySelector(".formClose")
-const logIn = document.querySelector(".logIn")
+let openForm = document.getElementById("openForm")
+let form = document.querySelector(".form")
+let forms = document.querySelector(".forms")
+let closeForm = document.querySelector(".formClose")
+let logIn = document.querySelector(".logIn")
 let goToCart = document.getElementById("goToCart")
-const pwHideShow = document.querySelector(".pwHide")
-const logInBtn = document.getElementById("logIn")
-const userNameInput = document.getElementById("userNameInput")
-const emailInput = document.getElementById("email")
-const pwInput = document.getElementById("password")
-const logOutBtn = document.getElementById("logOutBtn")
+let pwHideShow = document.querySelector(".pwHide")
+let logInBtn = document.getElementById("logIn")
+let userNameInput = document.getElementById("userNameInput")
+let emailInput = document.getElementById("email")
+let pwInput = document.getElementById("password")
+let logOutBtn = document.getElementById("logOutBtn")
 let usersForm = document.getElementById('users')
-let userName = document.getElementById('userName')
-let userEmail = document.getElementById('userEmail')
+let userNameWrite = document.getElementById('userName')
+let fullNameWrite = document.getElementById('fullName')
+let userEmailWrite = document.getElementById('userEmail')
+let genderWrite = document.getElementById('gender')
 let userSign = document.getElementById('userSign')
 let closeUser = document.querySelector('.closeUser')
 let products = document.querySelectorAll(".products .product")
@@ -74,7 +82,6 @@ let alertIcon = document.querySelector(".alertIcon")
 let logInVar = false;
 let items;
 let loves;
-let user;
 let users;
 
 
@@ -101,35 +108,33 @@ pwHideShow.addEventListener("click" , () => {
   }
 }
 )
-if (localStorage.getItem("users")) {
-  users = JSON.parse(localStorage.getItem("users"))
-  user = users[0]
-}
+
 logInBtn.addEventListener("click", () => {
-  if (userNameInput.value == user.userName && pwInput.value == user.password) {
-    logInVar = true;
-    openForm.style.display = 'none'
-    usersForm.style.display = 'block'
-    userName.innerHTML = user.userName
-    userEmail.innerHTML = user.Email
-    form.classList.remove("show")
-    alertMsg.innerHTML = `Welcome Back ${user.firstName + ' ' + user.lastName}`
-    alert.classList.remove("hide")
-    alert.classList.add("show")
-    setTimeout(() => {
-    alert.classList.add("hide")
-    alert.classList.remove("show")
-    } , 3000)
-    alertIcon.classList.add("fa-kiss-wink-heart")
+  if (localStorage.getItem("users")) {
+    users = JSON.parse(localStorage.getItem("users"))
+    console.log(users[0])
+    for (let i = 0; i <= users.length; i++) {
+      if (userNameInput.value === users[i]['userName'] &&emailInput.value === users[i]['Email'] && pwInput.value === users[i]['password']) {
+        logInVar = true;
+        openForm.style.display = 'none'
+        usersForm.style.display = 'block'
+        userNameWrite.innerHTML = users[i].userName
+        fullNameWrite.innerHTML =         alertMsg.innerHTML = users[i].firstName + ' ' + users[i].lastName
+        userEmailWrite.innerHTML = users[i].Email
+        genderWrite.innerHTML = users[i].gender
+        form.classList.remove("show")
+        alertMsg.innerHTML = `Welcome Back ${users[i].firstName + ' ' + users[i].lastName}`
+        alertIcon.classList.add("fa-kiss-wink-heart")
+      } else {
+        alertMsg.innerHTML = `User name or Password Is Uncorrect`
+        alertIcon.classList.add("fa-grin-beam-sweat")
+        alertAll()
+      }
+    }
   } else {
-    alertMsg.innerHTML = `User name or Password Is Uncorrect`
-    alert.classList.remove("hide")
-    alert.classList.add("show")
-    alertIcon.classList.add("fa-kiss-wink-heart")
-    setTimeout(() => {
-    alert.classList.add("hide")
-    alert.classList.remove("show")
-    } , 3000)
+        alertMsg.innerHTML = `Make A User First`
+        alertIcon.classList.add("fa-grin-beam-sweat")
+        alertAll()
   }
 })
 logOutBtn.addEventListener("click", () => {
@@ -145,14 +150,9 @@ logOutBtn.addEventListener("click", () => {
 goToCart.addEventListener(('click'), () => {
   if (logInVar === false) {
     shopCart.style.display = 'none'
-    alert.classList.remove("hide")
-    alert.classList.add("show")
     alertMsg.innerHTML = `Log In first`
     alertIcon.classList.add("fa-grin-beam-sweat")
-    setTimeout(() => {
-    alert.classList.add("hide")
-    alert.classList.remove("show")
-    } , 5000)
+    alertAll()
   }
   else {
     window.location = ("../cart.html")
@@ -188,10 +188,10 @@ if (shopCart.style.display === 'none') {
 })
 
 products.forEach((product) => {
-  const productName = product.querySelector(".description h4").innerHTML
-  const productimg = product.querySelector("img").getAttribute("src")
-  const productBrand = product.querySelector(".description h6").innerHTML
-  const productPrice = product.querySelector(".description h3 span").innerHTML
+  let productName = product.querySelector(".description h4").innerHTML
+  let productimg = product.querySelector("img").getAttribute("src")
+  let productBrand = product.querySelector(".description h6").innerHTML
+  let productPrice = product.querySelector(".description h3 span").innerHTML
 
   let buyBtn = product.querySelector("i.fa-shopping-cart")
   let loveBtn = product.querySelector("i.heartBtn")
@@ -237,3 +237,12 @@ products.forEach((product) => {
     localStorage.setItem("products" , JSON.stringify(items))
   })
 })
+
+function alertAll() {
+        alert.classList.remove("hide")
+      alert.classList.add("show")
+      setTimeout(() => {
+        alert.classList.add("hide")
+        alert.classList.remove("show")
+      }, 3000)
+}

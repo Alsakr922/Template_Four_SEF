@@ -29,8 +29,86 @@ h4{
 label{
   display:block;
 }
+html{
+  scroll-behavior: smooth;
+}
 body{
   font-family: 'League Spartan', sans-serif;
+}
+
+.input-box{
+  position: relative;
+  height: 50px;
+  max-width: 60px;
+  width: 100%;
+  border-radius: 6px;
+  transition: all 0.6s cubic-bezier(0.68,-0.55,0.265,1.55);
+}
+.input-box.show{
+    max-width: 350px;
+}
+.input-box input{
+  position: relative;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  background-color: transparent;
+  transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  padding: 0 15px;
+  outline: none;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 400;
+}
+.input-box.show input{
+  font-size: 22px;
+  opacity: 1;
+  padding: 0 15px 0 65px;
+  background-color: transparent;
+  color:var(--second);
+}
+.input-box .search{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 60px;
+  transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.input-box.show .search{
+  border-radius: 6px 0 0 6px;
+}
+.search .search-icon{
+  font-size: 30px;
+  color: black;
+  transform: rotate(90deg);
+    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  .input-box.show .search-icon{
+  color: var(--second);
+  transform: rotate(0);
+}
+.input-box .close-icon{
+  position: absolute;
+  right:-10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 30px;
+  opacity: 0;
+  pointer-events: none;
+  color: var(--second);
+  padding: 5px;
+    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+.input-box.show .close-icon{
+  transform: translateY(-50%) rotate(180deg);
+  opacity: 1;
+  pointer-events: auto;
 }
 .signupBody{
   background: url(../img/about/banner.png) no-repeat;
@@ -194,7 +272,7 @@ body{
   border-color: var(--main);
 }
 
-.form-outer form input:focus~i {
+.form-outer form input:focus>i {
   color: var(--main);
 }
 .form-outer form .page{
@@ -289,6 +367,9 @@ body{
 }
 #userSign{
 display: none;
+color: black!important;
+right: -130px;
+top: 55px;
 }
 
 /*?? ///////////////////////////////////////////////////////////////// ??*/

@@ -18,10 +18,14 @@
         <li><a class="text-black px-5" href="#" class="">Blog</a></li>
         <li><a class="text-black px-5" href="#" class="">About</a></li>
         <li><a class="text-black px-5" href="#" class="">Contact</a></li>
-              <li><a class="text-black py-2 px-2 mx-3 rounded-full" href="#">
-                <input onkeyup="searchFn(this.value)" type="search"  class="search border-b-2 border-solid border-gray-200  outline-none" name="search" id="searchInput">
-                <i id="searchIconBtn" class="fa-solid fa-search"></i></a></li>
-
+              <li class="searchParent"><div class="input-box">
+                <input onkeyup="searchFn(this.value)" type="text" placeholder="Search..."  class="" name="search" id="searchInput">
+                <span class="search">
+                <i id="searchIconBtn" class="fa-solid fa-search search-icon cursor-pointer"></i>
+                </span>
+                <i class="fa-solid fa-times close-icon cursor-pointer"></i>
+              </div>
+</li>
         <li><a class="text-black px-5" href="cart.html" class=""><i class="fas fa-shopping-bag"></i></a></li>
       </ul>
     </div> <!-- navbar -->

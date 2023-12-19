@@ -15,7 +15,40 @@ let loves;
 
 
 
+///////////////////////////////
+// search
+let inputBox = document.querySelector(".input-box")
+let searchIcon = document.querySelector(".search-icon")
+let closeIcon = document.querySelector(".close-icon")
 
+  searchIcon.addEventListener("click" , () => inputBox.classList.add("show"))
+  closeIcon.addEventListener("click" , () => inputBox.classList.remove("show"))
+function searchFn (value){
+  if (value === '') {
+    drawing()
+  }
+  else {
+    searchMood = 'name'
+    if (searchMood === 'name') {
+      homeCart.innerHTML = ''
+      for (let i = 0; i <= items.length; i++) {
+        if (items[i].name.includes(value)) {
+          homeCart.innerHTML += `
+        <tr class="py-5 product">
+        <td class="pt-5"><i id="removeBtn" onclick="removeCartItem(${i})" class="cursor-pointer fa-solid fa-times-circle rounded-full  h-10 text-2xl w-10 self-center"></i></td>
+        <td class="pt-5" ><img src="${items[i].imgSrc}" class="w-32 m-auto" alt=""></td>
+        <td class="pt-5">${items[i].name}</td>
+        <td class="pt-5">${items[i].brand}</td>
+        <td class="pt-5" id="price">${items[i].price}</td>
+        <td class="pt-5" id="Prodectads">40%</td>
+        </tr>
+  `
+        }
+      }
+    }
+  }
+}
+///////////////////////////////
 
 if (localStorage.getItem("products")) {
   items = JSON.parse(localStorage.products)
@@ -35,7 +68,7 @@ function drawing() {
 for (let i = 0; i <= items.length; i++){
   homeCart.innerHTML += `
         <tr class="py-5 product">
-        <td class="pt-5"><i id="removeBtn" onclick="removeCartItem(${i})" class="cursor-pointer fa-solid fa-times-circle rounded-full  h-10 text-2xl w-10 self-center"></i></td>
+        <td class="pt-5"><i id="removeBtn" onclick="removeCartItem(${i})" class="cursor-pointer fa-solid fa-times-circle rounded-full  h-10 text-2xl w-10 self-center hover:text-main"></i></td>
         <td class="pt-5" ><img src="${items[i].imgSrc}" class="w-32 m-auto" alt=""></td>
         <td class="pt-5">${items[i].name}</td>
         <td class="pt-5">${items[i].brand}</td>
@@ -111,44 +144,4 @@ function removeAllLovesProducts() {
   localStorage.removeItem("loves")
   homeLove.innerHTML = ''
   loveDescription.innerHTML = 'You Dont have Any Love Product'
-}
-///////////////////////////////
-// search
-let search = document.getElementById("searchInput")
-let searchIcon = document.getElementById("searchIconBtn")
-
-searchIcon.addEventListener("click", () => {
-
-  console.log(6)
-  if (search.style.display == 'inline-block') {
-    search.style.display = 'none'
-        searchIcon.classList.add("fa-search")
-    searchIcon.classList.remove("fa-times")
-  } else {
-    search.style.display = 'inline-block'
-    searchIcon.classList.remove("fa-search")
-    searchIcon.classList.add("fa-times")
-  }
-})
-function searchFn (value){
-
-  searchMood = 'name'
-  if (searchMood === 'name') {
-    for (let i = 0; i <= items.length; i++){
-      if (items[i].name.includes(value)) {
-        console.log(i)
-  //       homeCart.innerHTML = ''
-  //         homeCart.innerHTML += `
-  //       <tr class="py-5 product">
-  //       <td class="pt-5"><i id="removeBtn" onclick="removeCartItem(${i})" class="cursor-pointer fa-solid fa-times-circle rounded-full  h-10 text-2xl w-10 self-center"></i></td>
-  //       <td class="pt-5" ><img src="${items[i].imgSrc}" class="w-32 m-auto" alt=""></td>
-  //       <td class="pt-5">${items[i].name}</td>
-  //       <td class="pt-5">${items[i].brand}</td>
-  //       <td class="pt-5" id="price">${items[i].price}</td>
-  //       <td class="pt-5" id="Prodectads">40%</td>
-  //       </tr>
-  // `
-      }
-    }
-  }
 }
